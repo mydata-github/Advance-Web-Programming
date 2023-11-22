@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="a.js">
+  </head>
+  <center><body>
+    <h1>Calculator</h1>
+    <hr>
+    <table>
+      <tr>
+        <td>Enter No 1</td>
+        <td><input type="number" id="n1" /></td>
+      </tr>
+       <tr>
+        <td>Enter No 2</td>
+        <td><input type="number" id="n2" /></td>
+       </tr>
+        <td>Result</td>
+        <td><input type="number" id="n3" /></td>
+      </tr>
+      </tr>
+    </table>
+    <div class="button"><input type="button" value="Addition" id="Addition" onclick="Addition()"/>
+    <input type="button" value="Substraction" id="Substraction" onclick="Substraction()"/>
+    <input type="button" value="Multiplication" id="Multiplication" onclick="Multiplication()" />
+    <input type="button" value="Division" id="Division" onclick="Division()" /></div>
+    <script>
+        function Addition(){
+        var num1 =   document.getElementById("n1");
+       var A = parseInt(num1.value);
+       var num2 =   document.getElementById("n2");
+       var B = parseInt(num2.value); 
+      var res = A + B;
+            document.getElementById("n3").value=res;
+        } 
+        function Substraction(){
+        var num1 =   document.getElementById("n1");
+       var A = parseInt(num1.value);
+       var num2 =   document.getElementById("n2");
+       var B = parseInt(num2.value); 
+      var res = A - B;
+      document.getElementById("n3").value=res;
+        } 
+        function Multiplication(){
+        var num1 =   document.getElementById("n1");
+       var A = parseInt(num1.value);
+       var num2 =   document.getElementById("n2");
+       var B = parseInt(num2.value); 
+      var res = A * B;
+            document.getElementById("n3").value=res;
+        } 
+        function Division(){
+        var num1 =   document.getElementById("n1");
+       var A = parseInt(num1.value);
+       var num2 =   document.getElementById("n2");
+       var B = parseInt(num2.value); 
+      var res = A / B;
+            document.getElementById("n3").value=res;
+        } 
+    </script>
+  </body></center>
+</html>
