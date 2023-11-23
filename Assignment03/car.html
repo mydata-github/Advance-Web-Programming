@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <input type="button" id="btnStart" value="Start" onclick="Start()" />
+    <input
+      type="button"
+      id="btnStop"
+      disabled="disabled"
+      value="Stop"
+      onclick="Stop()"
+    />
+
+    <img
+      id="myCar"
+      style="
+        height: 100px;
+        width: 100px;
+        position: absolute;
+        top: 8px;
+        left: 0px;
+      "
+      src="car.png"
+    />
+
+    <div
+      style="
+        height: 50px;
+        width: 500px;
+        background-color: black;
+        position: absolute;
+        top: 80px;
+      "
+    ></div>
+
+    <div
+      style="
+        height: 50px;
+        width: 500px;
+        background-color: black;
+        position: relative;
+        top: 75px;
+        left: 500px;
+      "
+    ></div>
+
+    <script>
+      var counter = 0;
+      var returnBack = 915;
+      var newcount = 10;
+      var n = 490;
+      var token = 0;
+      var x = 0;
+      var tokenArray = new Array();
+      var queue = 0;
+      var newtokenArray = new Array();
+
+      function KeepGoing() {
+        // console.log(counter);
+        counter = counter + 1;
+        var refToMyCar = document.getElementById("myCar");
+        refToMyCar.style.left = counter + "px";
+        if (counter > 490) {
+          for (var i = 0; i < tokenArray.length; i++) {
+            var tokn = tokenArray.pop();
+            window.clearInterval(tokn);
+          }
+          rotate();
+        }
+      }
+      function newKeepGoing() {
+        // console.log(counter);
+        n = n + 1;
+        var refToMyCar = document.getElementById("myCar");
+        console.log(n);
+        refToMyCar.style.left = n + "px";
+        if (n > 915) {
+          window.clearInterval(token);
+          var a = document.getElementById("myCar");
+          a.style.transform = "scaleX(-1)";
+          x = window.setInterval(returnback, 15);
+        }
+      }
+      function returnback() {
+        // console.log(counter);
+        returnBack = returnBack - 1;
+        var refToMyCar = document.getElementById("myCar");
+        console.log(returnBack);
+        refToMyCar.style.left = returnBack + "px";
+
+        if (returnBack < 500) {
+          window.clearInterval(x);
+        }
+      }
+      function Start() {
+        var refTobtnStop = document.getElementById("btnStop");
+
+        refTobtnStop.disabled = null;
+
+        var token = window.setInterval(KeepGoing, 15);
+        tokenArray.push(token);
+      }
+      function newStart() {
+        var refTobtnStop = document.getElementById("btnStop");
+
+        token = window.setInterval(newKeepGoing, 15);
+      }
+      function fall() {
+        newcount = newcount + 1;
+
+        var ref = document.getElementById("myCar");
+        ref.style.top = newcount + "px";
+        if (newcount > 200) {
+          var car = document.getElementById("myCar");
+          window.clearInterval(queue);
+          car.style.transform = "rotate(360deg)";
+          newStart();
+        }
+      }
+      function rotate() {
+        // newcount = newcount + 1;
+        var car = document.getElementById("myCar");
+        car.style.transform = "rotate(77deg)";
+        queue = window.setInterval(fall, 20);
+      }
+      function Stop() {
+        var token = tokenArray.pop();
+        if (token != undefined) {
+          window.clearInterval(token);
+          if (tokenArray.length == 0) {
+            var refTobtnStop = document.getElementById("btnStop");
+
+            refTobtnStop.disabled = "disabled";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
