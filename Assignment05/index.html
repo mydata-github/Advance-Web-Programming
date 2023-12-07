@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <center>
+        <h1>Customer Registration</h1>
+    </center>
+    <hr/>
+    <br/>
+    <center>
+    <!-- <form action=""></form> -->
+    <div id="v1">
+        <table style="width: 500px; height: 500px;text-align: center;" >
+            <tr>
+                <td>Cust No:</td>
+                <td><input type="text" id="i1" placeholder="i.e. 5466.." value=""></td>
+                <td><div class="div2" id="div1er"></div></td>
+            </tr>
+            <tr>
+                <td>Cust Name:</td>
+                <td><input type="text" id="i2" placeholder="i.e. Shubh.."></td>
+                <td><div class="div2" id="div2er"></div></td>
+            </tr>
+            <tr>
+                <td>Email ID:</td>
+                <td><input type="text" id="i3" placeholder="i.e. Shubh@gmail.com"></td>
+                <td><div class="div2" id="div3er"></div></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" id="i4" placeholder="i.e. *******"></td>
+                <td><div class="div2" id="div4er"></div></td>
+            </tr>
+            <tr>
+                <td>Confirm Password:</td>
+                <td><input type="password" id="i5" placeholder="i.e. *******"></td>
+                <td><div class="div2" id="div5er"></div></td>
+            </tr>
+            <tr>
+                <td>Mobile No.:</td>
+                <td><input type="text" id="i6" maxlength="10" placeholder="i.e. 9584246715"></td>
+                <td><div class="div2" id="div6er"></div></td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td><input type="text" id="i7" placeholder="i.e. Pune"></td>
+                <td><div class="div2" id="div7er"></div></td>
+            </tr>
+            <tr>
+                <td>State:</td>
+                <td><select name="state" id="s1">
+                    <option value="v0">--select-one--</option>
+                    <option value="v1">Assam</option>
+                    <option value="v2">Gujrat</option>
+                    <option value="v3">Madhya Pradesh</option>
+                    <option value="v4">Tamil Nadu</option>
+                    <option value="v5">Jammu & Kashmir</option>
+                    <option value="v6">West Bengal</option>
+                </select></td>
+                <td><div class="div2" id="div8er"></div></td>
+            </tr>
+            <tr>
+                <td>Pincode:</td>
+                <td><input type="text" id="i8" placeholder="i.e. Pune"></td>
+                <td><div class="div2" id="div9er"></div></td>
+            </tr>
+            <tr>
+                <td>Request_Payment_Mode:</td>
+                <td>
+                    <input type="checkbox" id="i9" name="p1" value="crdt">Credit
+                    <input type="checkbox" id="i10" name="p2" value="upi">UPI
+                    <input type="checkbox" id="i11" name="p3" value="dbt">Debit
+                </td>
+                <td><div class="div2" id="div10er"></div></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" value="Submit" id="b1" onclick="Validations()"></td>
+            </tr>
+        </table>
+    </div>
+    <!-- </form> -->
+    </center>
+    <script>
+        function Validations(){
+            ValidateForEmpty("i1","div1er","Cust No is required!");
+            ValidateForEmpty("i2","div2er","Cust Name is required!");
+            ValidateForEmpty("i3","div3er","Email ID is required!");
+            ValidateForEmpty("i4","div4er","Password is required!");
+            ValidateForEmpty("i5","div5er","Confirm password is required!");
+            ValidateForEmpty("i6","div6er","Number is required!");
+            ValidateForEmpty("i7","div7er","City is required!");
+            ValidateForEmpty("s1","div8er","State is required!");
+            ValidateForEmpty("i9","div9er","Pincode is required!");
+            // ValidateForEmpty("i","div4er","Password is required!");
+        }
+        function ValidateForEmpty(id,errorid,errorMessage){
+            var refToinp = document.getElementById(id);
+            var refToerdiv= document.getElementById(errorid);
+            if(refToinp.tagName=="select" && refToinp.value=="default"){
+                refToerdiv.style.font="Sans-serif"
+                refToerdiv.style.color="red";
+                refToerdiv.innerText=errorMessage;
+            }
+            else if(refToinp.value ==""){
+                refToerdiv.style.font="Sans-serif"
+                refToerdiv.style.color="red";
+                refToerdiv.innerText=errorMessage;
+            }
+            else{
+                refToerdiv.innerText="";
+                }
+        }
+    </script>
+</body>
+</html>
